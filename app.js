@@ -75,6 +75,22 @@ const newToDoObj = req.params.name
 
 //8
 
+app.get("/completed/todos",(req,res)=>{
+    arr =[]
+    todos.forEach((ele,i)=>{
+        if(ele.isCompleted ===true){
+            arr.push(ele)
+        }
+    })
+    if(arr.length!=0){
+        res.json(arr)
+    }else{
+        res.json("not found")
+    }
+})
+
+
+
 app.listen(port, () => {
     console.log(`Example app listening at http://localhost:${port}`);
 });
