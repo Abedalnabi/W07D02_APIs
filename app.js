@@ -21,10 +21,25 @@ app.get("/todos", (req,res)=>{
 
 app.post("/create/todo",(req,res)=>{
 
-    
+    const newObj = {todo: req.body.todo , isCompleted: req.body.isCompleted}
+    todos.push(newObj)
+
+    res.json(newObj)
 })
 
+//5
+app.put("/update/todo/:name", (req,res)=>{
+const newToDoObj = req.params.name
+const obj = req.body.todo
 
+todos.forEach((ele,i)=>{
+    if(newToDoObj===ele.todo){
+        ele.todo = obj
+        res.json(ele)
+    }
+    res.json("Not Found")
+})
+})
 
 
 
