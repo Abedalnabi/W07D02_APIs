@@ -73,6 +73,23 @@ const newToDoObj = req.params.name
     res.json(todos)
 })
 
+///////ORRRR
+
+app.put("/complete/todo/:name",(req,res)=>{
+    const name = req.params.name
+    let index
+    const found = todos.find((ele,i)=>{
+            index=i
+            return name===ele.todo
+    })
+    if(found){
+        todos[index] = {todo : name , isCompleted :true}
+        res.json(todos[index])
+    }else{
+        res.json("Not found")
+    }
+
+})
 //8
 
 app.get("/completed/todos",(req,res)=>{
@@ -89,7 +106,7 @@ app.get("/completed/todos",(req,res)=>{
     }
 })
  ///////////////OR filter 
- /*
+/*
 app.get("/completed/todos",(req,res)=>{
     let find = todos.filter((ele,i)=>{
         return ele.isCompleted ===true
