@@ -37,11 +37,43 @@ todos.forEach((ele,i)=>{
         ele.todo = obj
         res.json(ele)
     }
+})
+res.json("Not Found")
+
+})
+
+//6
+
+app.delete("/delete/todo/:name",(req,res)=>{
+
+const newToDoObj = req.params.name
+todos.forEach((ele,i)=>{
+    if(newToDoObj===ele.todo){
+
+        // let a= ele
+        // todos.splice(i,1)
+        // res.json(a)
+        res.json(todos.splice(i,1))
+    }
+})
     res.json("Not Found")
-})
+
 })
 
+//7
 
+app.put("/complete/todo/:name",(req,res)=>{
+const newToDoObj = req.params.name
+    todos.forEach((ele,i)=>{
+        if(newToDoObj===ele.todo){
+            ele.isCompleted= true
+            res.json(todos)
+        }
+    })
+    res.json(todos)
+})
+
+//8
 
 app.listen(port, () => {
     console.log(`Example app listening at http://localhost:${port}`);
