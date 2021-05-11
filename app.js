@@ -88,8 +88,20 @@ app.get("/completed/todos",(req,res)=>{
         res.json("not found")
     }
 })
+ ///////////////OR filter 
+ /*
+app.get("/completed/todos",(req,res)=>{
+    let find = todos.filter((ele,i)=>{
+        return ele.isCompleted ===true
+    })
+    if(find.length!=0){
+        res.json(find)
+    }else{
+        res.json("not found")
+    }
 
-
+})
+*/
 
 app.listen(port, () => {
     console.log(`Example app listening at http://localhost:${port}`);
