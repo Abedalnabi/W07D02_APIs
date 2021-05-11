@@ -59,6 +59,19 @@ app.get("/user/:name", (req, res) => {
   }
 });
 
+app.get("/first-user",(req,res)=>{
+
+  res.status(200);
+  res.json(users[0])
+
+})
+
+app.get("/",(req,res)=>{
+
+    res.json("Hello World")
+})
+
+
 // a POST request on endpoint http://localhost:3000/create/user
 app.post("/create/user", (req, res) => {
   // the received information are in req.body
